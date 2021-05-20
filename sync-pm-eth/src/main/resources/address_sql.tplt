@@ -1,0 +1,17 @@
+CREATE TABLE `sync-pm-eth`.`addr_0x#xxx#`  (
+  `_ID` bigint(32) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `ADDRESS` varchar(128) NULL COMMENT '钱包地址',
+  `FLOW_TYPE` tinyint(2) NULL COMMENT '资产流动类型[1:流入,0:流出]',
+  `REF_ADDRESS` varchar(128) NULL COMMENT '关联地址',
+  `TOKEN_TYPE` varchar(32) NULL COMMENT '币种[eth / erc20-usdt]',
+  `AMOUNT` varchar(64) NULL COMMENT '代币数量',
+  `TX_ID` varbinary(128) NULL COMMENT '交易ID',
+  `BLOCK_HEIGHT` int(32) NULL COMMENT '区块高度',
+  `TRANSACTION_TYPE` varchar(255) NULL COMMENT '交易类型[1:普通转账,2:交易所提现,3:交易所充值]',
+  `_CREATE_TIME` datetime(0) NULL COMMENT '数据创建时间',
+  `_UPDATE_TIME` datetime(0) NULL COMMENT '数据更新时间',
+  `_TRACE` varchar(255) NULL COMMENT '关联TRACE',
+  `_DB_STATE` tinyint(2) NULL COMMENT '数据删除标记',
+  PRIMARY KEY (`_ID`),
+  FULLTEXT INDEX `ADDRESS_INDEX`(`ADDRESS`) COMMENT '地址索引'
+);
