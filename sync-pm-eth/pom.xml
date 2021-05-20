@@ -8,14 +8,13 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>commons-utils</artifactId>
-    <name>commons-utils</name>
+    <artifactId>sync-pm-eth</artifactId>
+    <name>sync-pm-eth</name>
 
     <dependencies>
         <dependency>
             <groupId>zy.pointer</groupId>
-            <artifactId>commons-framework</artifactId>
+            <artifactId>commons-business</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

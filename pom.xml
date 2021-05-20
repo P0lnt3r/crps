@@ -10,6 +10,13 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>commons-utils</module>
+    <module>commons-framework</module>
+    <module>commons-repository</module>
+      <module>service-api</module>
+    <module>commons-business</module>
+    <module>sync-pm-eth</module>
+    <module>sync-pm-trc</module>
+    <module>sync-addresstags</module>
   </modules>
 
   <name>crps</name>
