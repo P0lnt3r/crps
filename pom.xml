@@ -9,10 +9,8 @@
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <modules>
-    <module>commons-utils</module>
     <module>commons-framework</module>
-    <module>commons-repository</module>
-      <module>service-api</module>
+    <module>service-api</module>
     <module>commons-business</module>
     <module>sync-pm-eth</module>
     <module>sync-pm-trc</module>
@@ -27,10 +25,15 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
+    <hutool.version>5.1.0</hutool.version>
+    <mybatis-plus.version>3.4.0</mybatis-plus.version>
+    <lombok.version>1.18.4</lombok.version>
     <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
     <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
     <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
     <knife4j.version>2.0.8</knife4j.version>
+    <p6spy.version>3.8.6</p6spy.version>
+    <hutool.version>5.1.0</hutool.version>
   </properties>
 
   <dependencyManagement>
@@ -61,6 +64,34 @@
         <artifactId>knife4j-spring-boot-starter</artifactId>
         <version>${knife4j.version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-generator</artifactId>
+        <version>${mybatis-plus.version}</version>
+        <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>p6spy</groupId>
+        <artifactId>p6spy</artifactId>
+        <version>${p6spy.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>${hutool.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -76,6 +107,7 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+<!--          <skip>true</skip>-->
         </configuration>
       </plugin>
     </plugins>
