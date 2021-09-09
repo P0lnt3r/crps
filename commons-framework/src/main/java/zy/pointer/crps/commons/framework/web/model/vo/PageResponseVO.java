@@ -7,6 +7,7 @@ import lombok.Data;
 import zy.pointer.crps.commons.framework.repository.BaseEntity;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,12 +40,22 @@ public class PageResponseVO<ValueObject extends zy.pointer.crps.commons.framewor
         this.totalPages = page.getPages();
         try {
             Constructor<ValueObject> constructor = voClass.getConstructor();
-            ValueObject vo = constructor.newInstance();
             List<ValueObject> records = page.getRecords().stream().map( entity -> {
+                ValueObject vo = null;
+                try {
+                    vo = constructor.newInstance();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+                vo.from( entity , vo.getClass() );
                 if ( handler != null ){
                     return handler.handle( entity , vo );
                 }
-                return (ValueObject) vo.from( entity , vo.getClass() );
+                return vo;
             } ).collect(Collectors.toList());
             this.records = records;
         } catch (Exception e) {

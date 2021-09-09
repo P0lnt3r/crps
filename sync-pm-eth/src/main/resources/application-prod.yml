@@ -1,0 +1,27 @@
+env:
+  prod
+server.port: 8097
+
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-wz9y85gwj9d9000lywo.mysql.rds.aliyuncs.com:3306/crps?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+    username: root
+    password: 12c6DSiU4Rq3P4Zxzi
+
+oklink:
+  x-apikey: 2c0c89b1-c74d-4454-9f9d-f1539aa0d287
+
+eth:
+  sync:
+    switch: true
+    # 起始同步高度 , 起始高度表示从指定高度开始同步 , 如果这个值大于数据库已配置值,则使用配置值开始同步
+    # 终止同步高度 , 终止高度表示同步到了这个高度之后,就不进行数据同步了,如果配置为0,则表示一直追最新区块进行同步.
+    height: 12932612
+    end-height: 0
+  client:
+    endpoint: https://mainnet.infura.io/v3/65deb32db4b144f2aae9846c83ca7b6e
+  contract:
+    erc20-usdt: "0xdac17f958d2ee523a2206206994597c13d831ec7"
+

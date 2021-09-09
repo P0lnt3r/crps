@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="zy.pointer.crps.commons.business.cryptotx.repository.mapper.EthAddressTxMapper">
+
+    <resultMap id="BaseResultMap" type="zy.pointer.crps.commons.business.cryptotx.repository.model.EthAddressTx"  extends="common.BaseEntityResultMap">
+        <result column="ADDRESS" property="address" />
+        <result column="ADDRESS_PROJECT" property="addressProject" />
+        <result column="ADDRESS_EXCHANGE_TYPE" property="addressExchangeType" />
+        <result column="ADDRESS_TAG" property="addressTag" />
+        <result column="FLOW_TYPE" property="flowType" />
+        <result column="REF_ADDRESS" property="refAddress" />
+        <result column="REF_ADDRESS_PROJECT" property="refAddressProject" />
+        <result column="REF_ADDRESS_EXCHANGE_TYPE" property="refAddressExchangeType" />
+        <result column="REF_ADDRESS_TAG" property="refAddressTag" />
+        <result column="TOKEN" property="token" />
+        <result column="AMOUNT" property="amount" />
+        <result column="TX_HASH" property="txHash" />
+        <result column="TX_TIME" property="txTime" />
+        <result column="BLOCK_HEIGHT" property="blockHeight" />
+        <result column="TRANSACTION_TYPE" property="transactionType" />
+    </resultMap>
+
+    <resultMap id="StatisticsResultMap" type="zy.pointer.crps.commons.business.cryptotx.repository.model.extras.EthAddressTx_Statistics" extends="BaseResultMap">
+        <result column="TX_COUNT" property="txCount" />
+        <result column="SUM_AMOUNT" property="sumAmount" />
+    </resultMap>
+
+    <select id="selectMainTxTarget" resultType="map">
+        select FLOW_TX.ADDRESS 'address' , FLOW_TX.REF_ADDRESS 'refAddress' , SUM( FLOW_TX.AMOUNT ) 'sumAmount' , COUNT(1) 'txCount' , FLOW_TYPE 'flowType' , token 'token'
+          from
+                (
+                    select * from eth_addr_ where ADDRESS = #{address} and flow_type = #{flowType} and token = #{token}
+                ) FLOW_TX group by FLOW_TX.REF_ADDRESS order by SUM( FLOW_TX.AMOUNT ) desc limit 10
+    </select>
+
+    <select id="selectMainTxTargetStatistics" resultMap="StatisticsResultMap">
+        select  FLOW_TX.ADDRESS, FLOW_TX.ADDRESS_TAG, FLOW_TX.ADDRESS_PROJECT, FLOW_TX.ADDRESS_EXCHANGE_TYPE,
+                FLOW_TX.REF_ADDRESS, FLOW_TX.REF_ADDRESS_TAG , FLOW_TX.REF_ADDRESS_PROJECT, FLOW_TX.REF_ADDRESS_EXCHANGE_TYPE,
+                SUM( FLOW_TX.AMOUNT ) 'SUM_AMOUNT' , COUNT(1) 'TX_COUNT' ,
+                FLOW_TYPE , token
+          from
+                (
+                    select * from eth_addr_ where flow_type = #{flowType}
+                                              AND token = #{token}
+                                              AND ADDRESS = #{address}
+                ) FLOW_TX
+                group by FLOW_TX.REF_ADDRESS order by SUM( FLOW_TX.AMOUNT ) desc
+                <if test="limit != null and limit > 0">
+                    limit #{limit}
+                </if>
+    </select>
+
+</mapper>

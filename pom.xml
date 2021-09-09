@@ -14,7 +14,8 @@
     <module>commons-business</module>
     <module>sync-pm-eth</module>
     <module>sync-pm-trc</module>
-    <module>sync-addresstags</module>
+      <module>sync-local-eth</module>
+      <module>add-tx-executor</module>
   </modules>
 
   <name>crps</name>
@@ -34,6 +35,8 @@
     <knife4j.version>2.0.8</knife4j.version>
     <p6spy.version>3.8.6</p6spy.version>
     <hutool.version>5.1.0</hutool.version>
+    <okhttp.version>3.10.0</okhttp.version>
+    <web3j.version>3.4.0</web3j.version>
   </properties>
 
   <dependencyManagement>
@@ -91,7 +94,16 @@
         <artifactId>hutool-all</artifactId>
         <version>${hutool.version}</version>
       </dependency>
-
+      <dependency>
+        <groupId>org.web3j</groupId>
+        <artifactId>core</artifactId>
+        <version>${web3j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.squareup.okhttp3</groupId>
+        <artifactId>okhttp</artifactId>
+        <version>${okhttp.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -107,8 +119,12 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
-<!--          <skip>true</skip>-->
+          <skip>true</skip>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>

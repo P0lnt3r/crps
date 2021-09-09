@@ -1,0 +1,19 @@
+env:
+  test
+server.port: 8012
+
+sync:
+  source: "wangyx_tmp_chain.txt"
+  local:
+    dir: "G:\\target_test"
+
+spring:
+  # 数据源配置
+  datasource:
+#    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #url: jdbc:p6spy:mysql://localhost:3306/crps?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/crps?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+    username: root
+    password: 123456
+

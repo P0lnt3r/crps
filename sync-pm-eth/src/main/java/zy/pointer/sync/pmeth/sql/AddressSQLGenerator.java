@@ -20,7 +20,7 @@ public class AddressSQLGenerator {
         // SQL文件输出目录
         String fileOutPath = "E:\\create_eth_addr.sql";
         String template = loadTemplate();
-        List<String> result = ComposeEnumUtil.compose( 1 , arr_0x16 );
+        List<String> result = ComposeEnumUtil.compose( 2 , arr_0x16 );
         StringBuilder sb = new StringBuilder();
         result.forEach( e -> {
             sb.append(

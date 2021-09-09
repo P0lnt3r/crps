@@ -1,0 +1,16 @@
+env:
+  prod
+server.port: 8011
+
+sync:
+  source: "wangyx_tmp_chain2.txt"
+  local:
+    dir: "/opt/local_eth_data_files"
+
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-wz9y85gwj9d9000lywo.mysql.rds.aliyuncs.com:3306/crps?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+    username: root
+    password: 12c6DSiU4Rq3P4Zxzi

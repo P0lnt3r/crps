@@ -1,0 +1,21 @@
+env:
+  dev
+server.port: 8001
+
+spring:
+  # 数据源配置
+  datasource:
+#    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+#    url: jdbc:p6spy:mysql://localhost:3306/sync-pm-eth?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/crps?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+    username: root
+    password: 123456
+
+oklink:
+  x-apikeys: "2c0c89b1-c74d-4454-9f9d-f1539aa0d287,baec6df9-0729-49b9-85b8-3064c9090fed,204e7d6d-8183-4acd-9a39-a2c50fb5aa5b"
+
+eth:
+  contract:
+    erc20-usdt: "0xdac17f958d2ee523a2206206994597c13d831ec7"
+

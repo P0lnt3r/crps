@@ -1,13 +1,12 @@
 env:
   test
-
 spring:
-
   # 数据源配置
   datasource:
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     #driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:p6spy:mysql://localhost:3306/j2easy?serverTimezone=UTC&useSSL=false&characterEncoding=utf8
+    #url: jdbc:mysql://rm-wz9y85gwj9d9000lywo.mysql.rds.aliyuncs.com:3306/crps?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+    url: jdbc:p6spy:mysql://rm-wz9y85gwj9d9000lywo.mysql.rds.aliyuncs.com:3306/crps?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
     username: root
-    password: 123456
+    password: 12c6DSiU4Rq3P4Zxzi
 
